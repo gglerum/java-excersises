@@ -1,17 +1,17 @@
 package com.dotcomgame;
 
+import java.util.ArrayList;
+
 public class SimpleDotCom {
 
-    private int[] locationCells;
-
-    private int numOfHits = 0;
+    private ArrayList<Integer> locationCells;
 
     /**
      * Setter for locationCells
      * 
      * @param locationCells
      */
-    public void setLocationCells(int[] locationCells) {
+    public void setLocationCells(ArrayList<Integer> locationCells) {
         this.locationCells = locationCells;
     }
 
@@ -22,16 +22,21 @@ public class SimpleDotCom {
      * @return String "kill"|"hit"|"miss"
      */
     public String checkYourself(int userGuess) {
-        for (int locationCell : this.locationCells) {
-            if (userGuess == locationCell) {
-                numOfHits++;
-                if (numOfHits == locationCells.length) {
-                    return "kill";
-                }
-                return "hit";
-            }
+        int index = this.locationCells.indexOf(userGuess);
+
+        // if the guess is not in the locationCells return early with miss
+        if (index == -1) {
+            return "miss";
         }
-        return "miss";
+        // remove the cell that was hit
+        this.locationCells.remove(index);
+        // if the ArrayList is empty all cells have been hit and the SimpleDotCome has
+        // been destroyed
+        if (this.locationCells.isEmpty()) {
+            return "kill";
+        }
+
+        return "hit";
     }
 
 }

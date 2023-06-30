@@ -1,5 +1,7 @@
 package com.dotcomgame;
 
+import java.util.ArrayList;
+
 public class GenerateSimpleDotcoms {
 
     /**
@@ -7,14 +9,14 @@ public class GenerateSimpleDotcoms {
      * 
      * @return int[]
      */
-    private static int[] generateLocation() {
-        int[] locationCells = new int[DotcomGame.size];
+    private static ArrayList<Integer> generateLocation() {
+        ArrayList<Integer> locationCells = new ArrayList<Integer>();
         // determine the cell the location will start from. Must be smaller than the
         // size of the SimpleDotCom. Adding a 1 to make sure the cell can't be zero
         int cell = (int) (Math.random() * (DotcomGame.maxNumOfCells - DotcomGame.size) + 1);
 
-        for (int i = 0; i < locationCells.length; i++) {
-            locationCells[i] = cell;
+        for (int i = 0; i < DotcomGame.size; i++) {
+            locationCells.add(cell);
             cell++;
         }
 
