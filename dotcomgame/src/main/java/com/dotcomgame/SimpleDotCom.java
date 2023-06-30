@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class SimpleDotCom {
 
-    private ArrayList<Integer> locationCells;
+    private ArrayList<String> locationCells;
 
     /**
      * Setter for locationCells
      * 
      * @param locationCells
      */
-    public void setLocationCells(ArrayList<Integer> locationCells) {
+    public void setLocationCells(ArrayList<String> locationCells) {
         this.locationCells = locationCells;
     }
 
@@ -21,7 +21,7 @@ public class SimpleDotCom {
      * @param userGuess
      * @return String "kill"|"hit"|"miss"
      */
-    public String checkYourself(int userGuess) {
+    public String checkYourself(String userGuess) {
         int index = this.locationCells.indexOf(userGuess);
 
         // if the guess is not in the locationCells return early with miss
