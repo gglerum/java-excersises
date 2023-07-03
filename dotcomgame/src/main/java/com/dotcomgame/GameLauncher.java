@@ -8,6 +8,8 @@ public class GameLauncher {
 
     private SimpleDotCom[] simpleDotComs;
 
+    private SoundEffect effect;
+
     public GameLauncher(int numOfDotComs) {
         this.simpleDotComs = GenerateSimpleDotcoms.generateDotComs(numOfDotComs);
     }
@@ -28,16 +30,21 @@ public class GameLauncher {
 
         switch (result) {
             case "miss":
+                effect = SoundEffect.MISS;
                 System.out.println("You missed!");
                 break;
             case "hit":
+                effect = SoundEffect.HIT;
                 System.out.println("You hit the SimpleDotCom!");
                 break;
             case "kill":
                 this.destroyedDotComs++;
+                effect = SoundEffect.KILL;
                 System.out.println("You destoyed the SimpleDotCom!");
                 break;
         }
+
+        effect.play();
     }
 
     /**
