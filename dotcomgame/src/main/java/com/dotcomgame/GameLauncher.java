@@ -9,7 +9,7 @@ public class GameLauncher {
     private SimpleDotCom[] simpleDotComs;
 
     public GameLauncher(int numOfDotComs) {
-        simpleDotComs = GenerateSimpleDotcoms.generateDotComs(numOfDotComs);
+        this.simpleDotComs = GenerateSimpleDotcoms.generateDotComs(numOfDotComs);
     }
 
     /**
@@ -19,7 +19,7 @@ public class GameLauncher {
      */
     private void processPlayerGuess(String playerGuess) {
         String result = null;
-        for (SimpleDotCom simple : simpleDotComs) {
+        for (SimpleDotCom simple : this.simpleDotComs) {
             result = simple.checkYourself(playerGuess);
             if (!result.equals("miss")) {
                 break;
@@ -34,7 +34,7 @@ public class GameLauncher {
                 System.out.println("You hit the SimpleDotCom!");
                 break;
             case "kill":
-                destroyedDotComs++;
+                this.destroyedDotComs++;
                 System.out.println("You destoyed the SimpleDotCom!");
                 break;
         }

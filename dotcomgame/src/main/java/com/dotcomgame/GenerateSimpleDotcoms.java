@@ -79,8 +79,7 @@ public class GenerateSimpleDotcoms {
 
         SimpleDotCom[] simpleDotComs = new SimpleDotCom[numOfDotComs];
         for (int i = 0; i < simpleDotComs.length; i++) {
-            simpleDotComs[i] = new SimpleDotCom();
-            simpleDotComs[i].setLocationCells(generateLocation());
+            simpleDotComs[i] = new SimpleDotCom(generateLocation());
         }
         return simpleDotComs;
     }

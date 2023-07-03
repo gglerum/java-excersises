@@ -6,6 +6,16 @@ public class SimpleDotCom {
 
     private ArrayList<String> locationCells;
 
+    // No-args; initialize without setting anything
+    SimpleDotCom() {
+
+    }
+
+    // Initialize with location cells
+    SimpleDotCom(ArrayList<String> locationCells) {
+        this.locationCells = locationCells;
+    }
+
     /**
      * Setter for locationCells
      * 
