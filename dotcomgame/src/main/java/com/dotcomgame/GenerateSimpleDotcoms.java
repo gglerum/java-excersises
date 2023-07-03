@@ -9,7 +9,7 @@ public class GenerateSimpleDotcoms {
     /**
      * Generate a grid to place the DotComs on
      */
-    public static void generateGrid() {
+    static {
         // we can put it in an ArrayList. No need for a multi dimensional array
         grid = new ArrayList<String>();
 
@@ -75,8 +75,6 @@ public class GenerateSimpleDotcoms {
      * @return SimpleDotCom[]
      */
     public static SimpleDotCom[] generateDotComs(int numOfDotComs) {
-        generateGrid();
-
         SimpleDotCom[] simpleDotComs = new SimpleDotCom[numOfDotComs];
         for (int i = 0; i < simpleDotComs.length; i++) {
             simpleDotComs[i] = new SimpleDotCom(generateLocation());
