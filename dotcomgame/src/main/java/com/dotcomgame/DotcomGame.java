@@ -2,11 +2,11 @@ package com.dotcomgame;
 
 public class DotcomGame {
 
-    public static final int maxNumOfCells = 7;
+    public static final int MAX_NUM_OF_CELLS = 7;
 
-    public static final char maxChar = 'G';
+    public static final char MAX_CHAR = 'G';
 
-    public static final int size = 3;
+    public static final int DOTCOM_SIZE = 3;
 
     public static void main(String[] args) {
 

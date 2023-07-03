@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GenerateSimpleDotcoms {
 
-    static ArrayList<String> grid;
+    private static ArrayList<String> grid;
 
     /**
      * Generate a grid to place the DotComs on
@@ -14,9 +14,9 @@ public class GenerateSimpleDotcoms {
         grid = new ArrayList<String>();
 
         // x axis is alphabetical
-        for (char l = 'A'; l <= DotcomGame.maxChar; l++) {
+        for (char l = 'A'; l <= DotcomGame.MAX_CHAR; l++) {
             // y axis is numeric
-            for (int i = 1; i <= DotcomGame.maxNumOfCells; i++) {
+            for (int i = 1; i <= DotcomGame.MAX_NUM_OF_CELLS; i++) {
                 grid.add(l + Integer.toString(i));
             }
         }

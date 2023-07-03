@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class GameLauncher {
 
-    int destroyedDotComs = 0;
+    private int destroyedDotComs = 0;
 
-    SimpleDotCom[] simpleDotComs;
+    private SimpleDotCom[] simpleDotComs;
 
     public GameLauncher(int numOfDotComs) {
         simpleDotComs = GenerateSimpleDotcoms.generateDotComs(numOfDotComs);
@@ -50,7 +50,7 @@ public class GameLauncher {
         while (this.destroyedDotComs != this.simpleDotComs.length) {
             System.out.println(
                     String.format("Take a guess (A1 to %s):",
-                            DotcomGame.maxChar + Integer.toString(DotcomGame.maxNumOfCells)));
+                            DotcomGame.MAX_CHAR + Integer.toString(DotcomGame.MAX_NUM_OF_CELLS)));
 
             String playerGuess = input.nextLine();
             this.processPlayerGuess(playerGuess);
@@ -64,7 +64,7 @@ public class GameLauncher {
 
         System.out.println(String.format(
                 "Guess where the SimpleDotCom has been placed on a row from A1 to %s. The SimpleDotCom occupies three cells.",
-                DotcomGame.maxChar + Integer.toString(DotcomGame.maxNumOfCells)));
+                DotcomGame.MAX_CHAR + Integer.toString(DotcomGame.MAX_NUM_OF_CELLS)));
 
         this.requestInputFromPlayer();
 
