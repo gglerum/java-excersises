@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>battleship</groupId>
     <artifactId>battleship</artifactId>
@@ -10,9 +11,23 @@
         <maven.compiler.target>11</maven.compiler.target>
         <sonar.projectKey>battleship</sonar.projectKey>
         <sonar.projectName>battleship</sonar.projectName>
-        <sonar.token>squ_1730f89b04f0136bee803d2fdfb2ed716c4e4b98</sonar.token>
+        <sonar.token>${env.SONAR_TOKEN}</sonar.token>
+        <sonar.checkstyle.filters>
+            <![CDATA[
+            <module name="BeforeExecutionExclusionFileFilter">
+                <property name="fileNamePattern" value="module\-info\.java$" />
+            </module>
+            ]]>
+        </sonar.checkstyle.filters>
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.assertj</groupId>
@@ -25,7 +40,7 @@
             <groupId>org.testfx</groupId>
             <artifactId>testfx-core</artifactId>
             <version>4.0.15-alpha</version>
-            <scope>test</scope>            
+            <scope>test</scope>
         </dependency>
 
 
@@ -54,6 +69,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>10.12.1</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -77,21 +97,21 @@
                     <execution>
                         <id>default-check</id>
                         <goals>
-                        <goal>check</goal>
+                            <goal>check</goal>
                         </goals>
                         <configuration>
-                        <rules>
-                            <rule>
-                            <element>BUNDLE</element>
-                            <limits>
-                                <limit>
-                                <counter>COMPLEXITY</counter>
-                                <value>COVEREDRATIO</value>
-                                <minimum>0.00</minimum>
-                                </limit>
-                            </limits>
-                            </rule>
-                        </rules>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>COMPLEXITY</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.00</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
                         </configuration>
                     </execution>
                 </executions>

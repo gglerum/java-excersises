@@ -2,12 +2,13 @@
     "java.configuration.updateBuildConfiguration": "automatic",
     "maven.terminal.favorites": [
         {
-            "command": "clean verify sonar:sonar \\   -Dsonar.projectKey=battleship \\   -Dsonar.projectName='battleship' \\   -Dsonar.host.url=http://localhost:9000 \\   -Dsonar.token=sqp_50e4e9ac975f6104385fe868175a50649dca8c00",
+            "command": "clean verify sonar:sonar",
             "debug": false
         }
     ],
     "sonarlint.connectedMode.project": {
         "connectionId": "http-localhost-9000",
         "projectKey": "battleship"
-    }
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
 }
