@@ -9,7 +9,7 @@ import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit5.ApplicationExtension;
 
 @ExtendWith(ApplicationExtension.class)
-public class AppTest {
+class AppTest {
     @BeforeAll
     static void setup() throws Exception {
         FxToolkit.registerPrimaryStage();
