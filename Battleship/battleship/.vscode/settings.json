@@ -10,5 +10,5 @@
         "connectionId": "http-localhost-9000",
         "projectKey": "battleship"
     },
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
 }

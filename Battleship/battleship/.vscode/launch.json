@@ -15,7 +15,7 @@
             "name": "App",
             "request": "launch",
             "mainClass": "battleship/battleship.App",
-            "projectName": "battleship"
+            "projectName": "battleship",
         }
     ]
 }
