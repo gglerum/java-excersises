@@ -3,7 +3,9 @@ module battleship {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens battleship to javafx.fxml;
+    opens battleship.controllers to javafx.fxml;
 
     exports battleship;
+    exports battleship.models;
+    exports battleship.controllers;
 }
