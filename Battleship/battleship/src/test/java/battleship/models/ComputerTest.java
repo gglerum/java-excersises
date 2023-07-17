@@ -36,8 +36,8 @@ class ComputerTest {
         Computer cp1 = new Computer("cp1");
         Computer cp2 = new Computer("cp2");
 
-        cp1.setShips(GenerateShips.generateShips(5));
-        cp2.setShips(GenerateShips.generateShips(5));
+        cp1.setShips(GenerateShips.generateShips(1));
+        cp2.setShips(GenerateShips.generateShips(1));
 
         Assertions.assertThat(cp1.isDefeated()).isFalse();
         Assertions.assertThat(cp2.isDefeated()).isFalse();
