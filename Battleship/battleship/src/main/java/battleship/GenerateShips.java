@@ -11,7 +11,7 @@ public class GenerateShips {
     private GenerateShips() {
     }
 
-    private static ArrayList<String> grid;
+    private static List<String> grid;
 
     private static Random random;
 
@@ -21,7 +21,11 @@ public class GenerateShips {
     static {
         random = new Random();
         // we can put it in an ArrayList. No need for a multi dimensional array
-        grid = new ArrayList<>();
+        grid = generateGrid();
+    }
+
+    public static List<String> generateGrid() {
+        List<String> grid = new ArrayList<>();
 
         // x axis is alphabetical
         for (char l = 'A'; l <= GameConstants.MAX_CHAR; l++) {
@@ -30,6 +34,8 @@ public class GenerateShips {
                 grid.add(l + Integer.toString(i));
             }
         }
+
+        return grid;
     }
 
     /**
@@ -38,12 +44,12 @@ public class GenerateShips {
      * @param numOfDotComs
      * @return SimpleDotCom[]
      */
-    public static Ship[] generateShips(int numOfShips) {
+    public static List<Ship> generateShips(int numOfShips) {
         int shipSize = GameConstants.SHIP_SIZE;
-        Ship[] ships = new Ship[numOfShips];
+        List<Ship> ships = new ArrayList<>();
 
-        for (int i = 0; i < ships.length; i++) {
-            ships[i] = new Ship(generateLocation(shipSize));
+        for (int i = 0; i < numOfShips; i++) {
+            ships.add(new Ship(generateLocation(shipSize)));
         }
         return ships;
     }

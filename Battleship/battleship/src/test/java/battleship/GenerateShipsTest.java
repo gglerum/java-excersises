@@ -1,5 +1,7 @@
 package battleship;
 
+import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +12,8 @@ class GenerateShipsTest {
     void testGenerateShips() {
         int numOfShips = 7;
 
-        Ship[] ships = GenerateShips.generateShips(numOfShips);
+        List<Ship> ships = GenerateShips.generateShips(numOfShips);
 
-        Assertions.assertThat(ships.length).isEqualTo(numOfShips);
+        Assertions.assertThat(ships.size()).isEqualTo(numOfShips);
     }
 }
