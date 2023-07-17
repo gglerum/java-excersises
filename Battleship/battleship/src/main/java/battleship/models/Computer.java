@@ -8,6 +8,8 @@ import battleship.GenerateShips;
 
 public class Computer extends Player {
 
+    private String name = "";
+
     private List<String> grid;
 
     private String nextTarget = "";
@@ -18,12 +20,21 @@ public class Computer extends Player {
 
     private Random random = new Random();
 
+    public Computer(String strName) {
+        this();
+        name = strName;
+    }
+
     public Computer() {
         grid = GenerateShips.generateGrid();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String guess() {
-        if (hitMemory.isEmpty()) {
+        if (nextTarget.isEmpty()) {
             lastGuess = grid.get(random.nextInt(grid.size()));
         } else {
             lastGuess = nextTarget;
@@ -40,7 +51,7 @@ public class Computer extends Player {
         // get the numerical character from the coordinate
         int n = Character.getNumericValue(cell.charAt(1));
 
-        cell = (a + aI) + Integer.toString(n + nI);
+        cell = (char) (a + aI) + Integer.toString(n + nI);
 
         if (grid.indexOf(cell) > -1) {
             hitMemory.add(cell);
@@ -62,6 +73,7 @@ public class Computer extends Player {
     private void setNextTarget() {
         if (!hitMemory.isEmpty()) {
             nextTarget = hitMemory.get(random.nextInt(hitMemory.size()));
+            hitMemory.remove(nextTarget);
         }
     }
 
