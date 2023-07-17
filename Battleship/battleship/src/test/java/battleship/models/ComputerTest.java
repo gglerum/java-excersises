@@ -1,10 +1,9 @@
-package battleship;
+package battleship.models;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import battleship.models.Computer;
-import battleship.models.Player;
+import battleship.GenerateShips;
 
 class ComputerTest {
 

@@ -14,6 +14,6 @@ class GenerateShipsTest {
 
         List<Ship> ships = GenerateShips.generateShips(numOfShips);
 
-        Assertions.assertThat(ships.size()).isEqualTo(numOfShips);
+        Assertions.assertThat(ships).hasSize(numOfShips);
     }
 }
