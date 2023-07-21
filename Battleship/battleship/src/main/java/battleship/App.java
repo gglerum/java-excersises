@@ -9,21 +9,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import battleship.controllers.PrimaryController;
-import battleship.models.Computer;
-import battleship.models.Player;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
+    public static Game game;
+
     private static Scene scene;
 
     private static Stage primaryStage;
-
-    private static Computer computer = new Computer("cp1");
-
-    private static Player player = new Player();
 
     public static PrimaryController controller;
 
@@ -52,24 +48,8 @@ public class App extends Application {
         return parent;
     }
 
-    public static String handleInput(String guess) {
-        return computer.checkIfShipHasBeenHit(guess);
-    }
-
-    public static String playComputer() {
-        String result = player.checkIfShipHasBeenHit(computer.guess());
-        computer.processResult(result);
-        return result;
-    }
-
-    public static Boolean isGameOver() {
-        return player.isDefeated() || computer.isDefeated();
-    }
-
     public static void main(String[] args) {
-        player.setShips(GenerateShips.generateShips(5));
-        computer.setShips(GenerateShips.generateShips(5));
-
+        game = new Game();
         launch();
     }
 
