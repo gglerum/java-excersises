@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 public class PrimaryController implements Initializable {
     @FXML
@@ -20,18 +22,35 @@ public class PrimaryController implements Initializable {
     Label statusLabel;
 
     @FXML
-    public void guess() {
-        String result = App.handleInput(inputGuess.getText());
-        statusLabel.setText(String.format("Player had a %s", result));
+    Button buttonGuess;
 
-        if (App.isGameOver()) {
+    @FXML
+    Text scrollingOutput;
+
+    @FXML
+    public void guess() {
+        String playerGuess = inputGuess.getText();
+
+        addToOutput("Player guessed:" + playerGuess);
+
+        String resultText = "Player had a " + App.game.handleInput(inputGuess.getText());
+        statusLabel.setText(resultText);
+        addToOutput(resultText);
+
+        buttonGuess.setDisable(true);
+
+        if (App.game.isGameOver()) {
             statusLabel.setText("Game Over");
         }
 
-        delay();
+        delayForComputer();
     }
 
-    public static void delay() {
+    public void addToOutput(String output) {
+        scrollingOutput.setText(output + "\n" + scrollingOutput.getText());
+    }
+
+    public void delayForComputer() {
         Task<Void> sleeper = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
@@ -44,16 +63,21 @@ public class PrimaryController implements Initializable {
             }
         };
         sleeper.setOnSucceeded(event -> {
-            String result = App.playComputer();
+            String[] result = App.game.playComputer();
+            String resultText = "Computer had a " + result[1];
 
-            if (App.isGameOver()) {
-                Platform.runLater(() -> {
-                    App.controller.statusLabel.setText("Game Over");
-                });
+            addToOutput("Computer guessed:" + result[0]);
+            addToOutput(resultText);
+
+            if (App.game.isGameOver()) {
+                resultText = "Game Over";
+                addToOutput(resultText);
             } else {
-                App.controller.statusLabel.setText(String.format("Computer had a %s",
-                        result));
+                App.controller.buttonGuess.setDisable(false);
             }
+
+            App.controller.statusLabel.setText(resultText);
+
         });
         new Thread(sleeper).start();
     }
