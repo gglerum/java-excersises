@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class GameLauncher {
 
-    public static Scanner input = new Scanner(System.in);
+    public static final Scanner input = new Scanner(System.in);
 
     /**
      * Get input from scanner stream and make sure if is an int
@@ -22,7 +22,7 @@ public class GameLauncher {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         System.out.println("What's your name?:");
         String name = input.nextLine();
         int numPlayers = getIntFromInput("Input amount of players:");
