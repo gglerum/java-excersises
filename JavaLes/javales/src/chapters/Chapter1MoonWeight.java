@@ -20,5 +20,7 @@ public class Chapter1MoonWeight {
         double kg = (unit.equals("kg") ? weight : weight * LBS_TO_KG) * MOON_WEIGHT_FRACTION;
 
         System.out.println(String.format("Your moon weight is in lbs %.1f and in kg %.1f", lbs, kg));
+
+        Utils.closeInputStream();
     }
 }

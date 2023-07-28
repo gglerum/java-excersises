@@ -7,8 +7,7 @@ import javales.src.Utils;
 //using the Sieve of Eratosthenes with a bitset to find prime numbers between two given ints
 public class Chapter2PrimeNumbers {
     public static void main(String[] args) {
-        int s = 0;
-        int n = 0;
+        int s = 0, n = 0;
         // keep looping untill the correct input is provided
         while (true) {
             s = Integer.parseInt(Utils.getFromInput(
@@ -18,7 +17,7 @@ public class Chapter2PrimeNumbers {
                     "At what number do we need to stop looking for primes?",
                     "\\d+"));
 
-            if (s != n && s < n)
+            if (s < n)
                 break;
 
             System.out.println("Specify a correct range.");
@@ -28,6 +27,8 @@ public class Chapter2PrimeNumbers {
 
         System.out.println("Prime Numbers between 2 and " + n + ":");
         printPrimes(primes, s, n);
+
+        Utils.closeInputStream();
     }
 
     private static void printPrimes(BitSet primes, int s, int n) {

@@ -14,6 +14,7 @@ public class Chapter2SpeedOfSound {
 
         System.out.println(String.format("The distance to the object was: %.1f feet", ftTraveled));
 
+        Utils.closeInputStream();
     }
 
 }

@@ -58,4 +58,8 @@ public class Utils {
         return getFromInput(label, "(.*)");
     }
 
+    public static void closeInputStream() {
+        INPUT.close();
+    }
+
 }
