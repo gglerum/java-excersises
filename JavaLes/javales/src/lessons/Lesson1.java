@@ -135,11 +135,11 @@ class Lesson1 {
         System.out.println(
                 "Een bar is open vanaf 9 uur tot 3's snachts. Tot 12 uur komen er elke kwartier willekeurig tussen 5 en 10 mensen in de kroeg aan. Na 11 uur verlaten elk kwartier tussen 2 en 8 mensen de kroeg weer. Hoeveel mensen zijn om 3 uur aanwezig?");
 
-        int numOfPeople = 0;
+        // these vars could be asked from the user as input
         double interval = 0.25;
-        int lateHours = 11;
         String startTime = "21:00";
         String endTime = "03:00";
+        String lateHours = "23:00";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
@@ -151,13 +151,18 @@ class Lesson1 {
         if (closingTime.isBefore(openingTime)) {
             closingTime = closingTime.plusHours(24);
         }
-
+        // how long the bar stays open
         Duration duration = Duration.between(openingTime, closingTime);
+        // after how many hours patrons start leaving
+        Duration leavingAfter = Duration.between(openingTime,
+                LocalDateTime.parse("2023-07-21 " + lateHours, formatter));
+
+        int numOfPeople = 0;
 
         for (double i = 0; i <= duration.toHours(); i += interval) {
             numOfPeople += Utils.getRandomBetweenInts(5, 10);
 
-            if (i >= lateHours) {
+            if (i >= leavingAfter.toHours()) {
                 numOfPeople -= Utils.getRandomBetweenInts(2, 8);
             }
         }
