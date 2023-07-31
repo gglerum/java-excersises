@@ -29,8 +29,8 @@ public abstract class Person {
     }
 
     protected Person(String name, int age) {
-        this.name = name;
-        this.age = age;
+        this.setName(name);
+        this.setAge(age);
     }
 
 }

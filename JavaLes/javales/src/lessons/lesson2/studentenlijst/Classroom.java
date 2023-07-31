@@ -45,9 +45,8 @@ public class Classroom {
     }
 
     public Classroom(String name, Mentor mentor) {
-
-        this.name = name;
-        this.mentor = mentor;
+        this.setName(name);
+        this.setMentor(mentor);
     }
 
     public Classroom(String name) {

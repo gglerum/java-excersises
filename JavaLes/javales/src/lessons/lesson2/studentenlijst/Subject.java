@@ -35,7 +35,7 @@ public class Subject {
     }
 
     public Subject(String name, double grade) {
-        this.name = name;
-        this.grade = grade;
+        this.setName(name);
+        this.setGrade(grade);
     }
 }

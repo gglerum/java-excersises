@@ -9,8 +9,11 @@ public class Student extends Person {
 
     private List<Subject> grades = new ArrayList<>();
 
-    public Student(String name, int age) {
+    private double average = -1;
+
+    public Student(String name, int age, String studentNumber) {
         super(name, age);
+        this.setStudentNumber(studentNumber);
     }
 
     /**
@@ -48,6 +51,22 @@ public class Student extends Person {
         } else {
             this.grades.add(new Subject(newSubject, grade));
         }
+    }
+
+    private void calculateAverage() {
+        this.average = this.grades.stream().map(Subject::getGrade).reduce(0.0, Double::sum) / this.grades.size();
+    }
+
+    public double getAverage() {
+        if (this.average == -1) {
+            this.calculateAverage();
+        }
+        return this.average;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Student %s - %s", this.getName(), this.getStudentNumber());
     }
 
 }
