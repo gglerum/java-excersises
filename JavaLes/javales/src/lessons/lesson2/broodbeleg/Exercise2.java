@@ -124,7 +124,7 @@ public class Exercise2 {
      * @return textual list of beleg
      */
     private static String belegListToString(List<Beleg> beleg, Function<Beleg, String> fieldFn) {
-        return String.join("\n", beleg.stream().map(fieldFn).sorted().toArray(String[]::new)) + "\n";
+        return String.join("\n", beleg.stream().map(fieldFn).toArray(String[]::new)) + "\n";
     }
 
     /**
