@@ -111,25 +111,25 @@ public class Exercise1 {
     private static void setup() {
         // create the students and assign their grades
         Student droes = new Student("Droes", 16, "0001");
-        droes.addGrade(NEDERLANDS, 5.5);
+        droes.addGrade(new Subject(NEDERLANDS, 5.5));
         Student anton = new Student("Anton", 15, "0002");
-        anton.addGrade(NEDERLANDS, 7.0);
+        anton.addGrade(new Subject(NEDERLANDS, 7.0));
         Student antoinette = new Student("Antoinette", 16, "0003");
-        anton.addGrade(NEDERLANDS, 9.7);
+        anton.addGrade(new Subject(NEDERLANDS, 9.7));
 
         Student roy = new Student("Roy", 17, "0004");
-        roy.addGrade(NEDERLANDS, 6);
+        roy.addGrade(new Subject(NEDERLANDS, 6));
         Student kees = new Student("Kees", 16, "0005");
-        kees.addGrade(NEDERLANDS, 4.0);
+        kees.addGrade(new Subject(NEDERLANDS, 4.0));
         Student marie = new Student("Marie", 16, "0006");
-        marie.addGrade(NEDERLANDS, 2.0);
+        marie.addGrade(new Subject(NEDERLANDS, 2.0));
 
         Student tim = new Student("Tim", 17, "0007");
-        tim.addGrade(NEDERLANDS, 3.2);
+        tim.addGrade(new Subject(NEDERLANDS, 3.2));
         Student piet = new Student("Piet", 16, "0008");
-        piet.addGrade(NEDERLANDS, 7.0);
+        piet.addGrade(new Subject(NEDERLANDS, 7.0));
         Student kim = new Student("Kim", 16, "0009");
-        kim.addGrade(NEDERLANDS, 6.0);
+        kim.addGrade(new Subject(NEDERLANDS, 6.0));
 
         // create the class rooms and add the students
         Classroom room1 = new Classroom("4a", new Mentor("Klaas Vaartjes", 54));

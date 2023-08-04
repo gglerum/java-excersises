@@ -1,11 +1,12 @@
 package javales.src.lessons.lesson2.studentenlijst;
 
-public abstract class Person {
+public abstract class Person implements IPerson {
 
     private String name;
 
     private int age;
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -13,6 +14,7 @@ public abstract class Person {
     /**
      * @return the name
      */
+    @Override
     public String getName() {
         return this.name;
     }
@@ -20,10 +22,12 @@ public abstract class Person {
     /**
      * @return the age
      */
+    @Override
     public int getAge() {
         return this.age;
     }
 
+    @Override
     public void setAge(int age) {
         this.age = age;
     }

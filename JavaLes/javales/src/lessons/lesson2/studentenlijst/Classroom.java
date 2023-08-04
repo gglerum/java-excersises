@@ -7,32 +7,32 @@ public class Classroom {
 
     private String name;
 
-    private Mentor mentor;
+    private IMentor mentor;
 
-    private List<Student> students = new ArrayList<>();
+    private List<IStudent> students = new ArrayList<>();
 
     /**
      * @return List<Student>
      */
-    public List<Student> getStudents() {
+    public List<IStudent> getStudents() {
         return this.students;
     }
 
     /**
      * @param students
      */
-    public void setStudents(List<Student> students) {
+    public void setStudents(List<IStudent> students) {
         this.students = students;
     }
 
     /**
      * @return Mentor
      */
-    public Mentor getMentor() {
+    public IMentor getMentor() {
         return this.mentor;
     }
 
-    public void setMentor(Mentor mentor) {
+    public void setMentor(IMentor mentor) {
         this.mentor = mentor;
     }
 
@@ -44,7 +44,7 @@ public class Classroom {
         this.name = name;
     }
 
-    public Classroom(String name, Mentor mentor) {
+    public Classroom(String name, IMentor mentor) {
         this.setName(name);
         this.setMentor(mentor);
     }
@@ -53,9 +53,9 @@ public class Classroom {
         this.name = name;
     }
 
-    public void addStudent(Student student) {
+    public void addStudent(IStudent student) {
         // look up student
-        Student found = this.students.stream().filter(s -> student.getName().equals(s.getName())).findFirst()
+        IStudent found = this.students.stream().filter(s -> student.getName().equals(s.getName())).findFirst()
                 .orElse(null);
         // if student does not exist add student, prevent redudant records
         if (found == null) {

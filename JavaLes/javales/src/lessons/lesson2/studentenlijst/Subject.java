@@ -1,6 +1,6 @@
 package javales.src.lessons.lesson2.studentenlijst;
 
-public class Subject {
+public class Subject implements ISubject {
 
     private String name;
 
@@ -9,6 +9,7 @@ public class Subject {
     /**
      * @return the name
      */
+    @Override
     public String getName() {
         return this.name;
     }
@@ -16,6 +17,7 @@ public class Subject {
     /**
      * @param name the name to set
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -23,6 +25,7 @@ public class Subject {
     /**
      * @return the grade
      */
+    @Override
     public double getGrade() {
         return this.grade;
     }
@@ -30,6 +33,7 @@ public class Subject {
     /**
      * @param grade the grade to set
      */
+    @Override
     public void setGrade(double grade) {
         this.grade = grade;
     }

@@ -3,11 +3,11 @@ package javales.src.lessons.lesson2.studentenlijst;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student extends Person {
+public class Student extends Person implements IStudent {
 
     private String studentNumber;
 
-    private List<Subject> grades = new ArrayList<>();
+    private List<ISubject> grades = new ArrayList<>();
 
     private double average = -1;
 
@@ -19,6 +19,7 @@ public class Student extends Person {
     /**
      * @param studentNumber
      */
+    @Override
     public void setStudentNumber(String studentNumber) {
         this.studentNumber = studentNumber;
     }
@@ -26,6 +27,7 @@ public class Student extends Person {
     /**
      * @return the studentNumber
      */
+    @Override
     public String getStudentNumber() {
         return this.studentNumber;
     }
@@ -33,7 +35,8 @@ public class Student extends Person {
     /**
      * @return the grades
      */
-    public List<Subject> getGrades() {
+    @Override
+    public List<ISubject> getGrades() {
         return grades;
     }
 
@@ -41,22 +44,25 @@ public class Student extends Person {
      * @param newSubject
      * @param grade
      */
-    public void addGrade(String newSubject, double grade) {
+    @Override
+    public void addGrade(ISubject newSubject) {
         // find the subject in the grades list by subject name
-        Subject subject = this.grades.stream().filter(s -> newSubject.equals(s.getName())).findFirst().orElse(null);
+        ISubject subject = this.grades.stream().filter(s -> newSubject.getName().equals(s.getName())).findFirst()
+                .orElse(null);
         // if subject has been found change the grade, else add the subject to the list
         // with grade
         if (subject != null) {
-            subject.setGrade(grade);
+            subject.setGrade(newSubject.getGrade());
         } else {
-            this.grades.add(new Subject(newSubject, grade));
+            this.grades.add(newSubject);
         }
     }
 
     private void calculateAverage() {
-        this.average = this.grades.stream().map(Subject::getGrade).reduce(0.0, Double::sum) / this.grades.size();
+        this.average = this.grades.stream().map(ISubject::getGrade).reduce(0.0, Double::sum) / this.grades.size();
     }
 
+    @Override
     public double getAverage() {
         if (this.average == -1) {
             this.calculateAverage();
