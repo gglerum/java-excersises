@@ -70,8 +70,7 @@ public class Student extends Person implements IStudent {
         return this.average;
     }
 
-    @Override
-    public String toString() {
+    public String toListEntry() {
         return String.format("Student %s - %s", this.getName(), this.getStudentNumber());
     }
 

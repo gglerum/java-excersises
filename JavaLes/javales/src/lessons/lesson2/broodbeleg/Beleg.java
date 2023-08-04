@@ -73,8 +73,7 @@ public class Beleg {
         this.shelf = sku;
     }
 
-    @Override
-    public String toString() {
+    public String toInventoryString() {
         return String.format("%-10s\t%-10s\t%s", this.getName(), this.getCategory(), this.getShelf());
     }
 

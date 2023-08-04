@@ -31,7 +31,7 @@ public class Exercise1 {
     /**
      * ArrayList of students
      */
-    private static List<Student> students;
+    private static List<IStudent> students;
 
     public static void main(String[] args) {
         setup();
@@ -48,8 +48,8 @@ public class Exercise1 {
     private static void printStudentsPassedAndFailed() {
         String output = "";
 
-        List<Student> passed = getStudentsByCriteriaSortedByAVGGrade((Student s) -> s.getAverage() > AVERAGE);
-        List<Student> failed = getStudentsByCriteriaSortedByAVGGrade((Student s) -> s.getAverage() <= AVERAGE);
+        List<IStudent> passed = getStudentsByCriteriaSortedByAVGGrade((IStudent s) -> s.getAverage() > AVERAGE);
+        List<IStudent> failed = getStudentsByCriteriaSortedByAVGGrade((IStudent s) -> s.getAverage() <= AVERAGE);
 
         output += "Passing grades:\n";
         output += DIVIDER;
@@ -61,9 +61,9 @@ public class Exercise1 {
         System.out.print(output);
     }
 
-    private static List<Student> getStudentsByCriteriaSortedByAVGGrade(Predicate<Student> consumer) {
+    private static List<IStudent> getStudentsByCriteriaSortedByAVGGrade(Predicate<IStudent> consumer) {
         return students.stream().filter(consumer)
-                .sorted(Comparator.comparingDouble(Student::getAverage).reversed()).toList();
+                .sorted(Comparator.comparingDouble(IStudent::getAverage).reversed()).toList();
     }
 
     /**
@@ -72,11 +72,11 @@ public class Exercise1 {
      * @param List<Student> students
      * @return String output
      */
-    private static String addAvgGradeListToOutput(List<Student> students) {
+    private static String addAvgGradeListToOutput(List<IStudent> students) {
         var output = new Object() {
             String value = "";
         };
-        students.forEach((Student student) -> output.value += String.format("%s:\t%.1f%n", student,
+        students.forEach((IStudent student) -> output.value += String.format("%s:\t%.1f%n", student.toListEntry(),
                 student.getAverage()));
 
         return output.value;
@@ -95,7 +95,7 @@ public class Exercise1 {
             output.value += DIVIDER;
 
             classroom.getStudents().forEach(student -> {
-                output.value += String.format("%s:%n", student);
+                output.value += String.format("%s:%n", student.toListEntry());
                 output.value += "-".repeat(20) + "\n";
 
                 student.getGrades().forEach(

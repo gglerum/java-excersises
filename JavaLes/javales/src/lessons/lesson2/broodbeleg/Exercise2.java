@@ -89,7 +89,7 @@ public class Exercise2 {
      */
     private static String getListAsStringSortedBy(Function<Beleg, String> fieldFn) {
         return belegListToString(beleg.stream().sorted(Comparator.comparing(fieldFn)).toList(),
-                Beleg::toString);
+                Beleg::toInventoryString);
     }
 
     /**
