@@ -4,6 +4,7 @@
         "broodbeleg",
         "droes",
         "Hagelslag",
+        "Ipet",
         "javales",
         "Kaas",
         "kees",
@@ -20,5 +21,6 @@
         "Vleeswaren",
         "Vruchtenhagel",
         "Zoetbeleg"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
