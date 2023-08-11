@@ -1,21 +1,32 @@
 package lesson3;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.instancio.Instancio;
+import org.instancio.Select;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
+
+import lesson3.store.Diagnosis;
+import lesson3.store.Treatment;
 
 public class StoreTest {
 
+    @BeforeAll
+    public static void createData() {
+        Store.setTreatments(new ArrayList<>(
+                Instancio.ofList(Treatment.class).size(10).create()));
+
+        Store.setDiagnoses(new ArrayList<>(
+                Instancio.ofList(Diagnosis.class).size(10)
+                        .ignore(Select.field(Diagnosis::getTreatmentPlans))
+                        .create()));
+    }
+
     @Test
-    public void createTreatments() {
-
-        List<Treatment> mockTreatments = Instancio.ofList(Treatment.class).size(10).create();
-
-        Assertions.assertEquals(mockTreatments.size(), 10);
-
+    public void dataIsPopulated() {
+        Assertions.assertEquals(10, Store.getTreatments().size());
     }
 
 }
